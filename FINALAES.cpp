@@ -295,20 +295,6 @@ string* generate_subkeys(string key)
     return subkey;//in binary
 }
 
-string shift_left(string k)
-{
-    string s = "";
-    for (int j = 1; j < 8; j++)
-    {
-        s += k[j];
-    }
-    s += '0';
-    if (k[0] == '1')
-        s = "1" + s;
-    else
-        s = "0" + s;
-    return s;
-}
 
 
 
@@ -380,7 +366,7 @@ string AESencryption(string txt, string key)
 
                         if (Mix[k][y] == 2)
                         {
-                            tumpmix[y] = shift_left(txt2d[y][z]);
+                            tumpmix[y] = txt2d[y][z] + "0";
                             while (true)
                             {
                                 tumpmix[y] = xor_(tumpmix[y], "100011011");
@@ -394,7 +380,7 @@ string AESencryption(string txt, string key)
                         }
                         else if (Mix[k][y] == 3)
                         {
-                            tumpmix[y] = shift_left(txt2d[y][z]);
+                            tumpmix[y] = txt2d[y][z] + "0";
                             while (true)
                             {
                                 tumpmix[y] = xor_(tumpmix[y], "100011011");
@@ -743,7 +729,6 @@ int main()
     plaintxt = BinaryToASCII(plaintxt);
     cout << "\nPlain Text is : " << plaintxt << endl;
 
- //   return 0;
 }
 
 
