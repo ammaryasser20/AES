@@ -691,16 +691,16 @@ int main()
     cin >> message;
     cout << "\nEnter Your Key: ";
     cin >> key;
-    key = ASCIIToBinary(key);
-    key = BinToHex(key);
+
     // key length 128bit or 32 hexa or 16 characters
-    while (key.length() != 32)
+    while (key.length() != 16)
     {
         cout << "Error the key length is invalid!! (the key must be 16 characters)" << endl;
         cout << "Enter the Key: ";
         cin >> key;
     }
-
+    key = ASCIIToBinary(key);
+    key = BinToHex(key);
     message = handle_block(message);
 
     int size = message.length() / 128;
